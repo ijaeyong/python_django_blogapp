@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
-# import pymysql
+import pymysql
 # pymysql django ORM 연동
-# pymysql.install_as_MySQLdb()
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '35.173.205.86',
-    '18.183.139.250'
+    '18.183.139.250',
+    '127.0.0.1'
 ]
 
 # Application definition
@@ -82,18 +83,19 @@ WSGI_APPLICATION = 'mydjango.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'django_db', # DB명
-    #     'USER': 'python', # 데이터베이스 계정
-    #     'PASSWORD':'python', # 계정 비밀번호
-    #     'HOST':'djangomysql.co3yx3ayxu1q.us-east-1.rds.amazonaws.com', # 데이테베이스 IP
-    #     'PORT':'3306', # 데이터베이스 port
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db', # DB명
+        'USER': 'python', # 데이터베이스 계정
+        'PASSWORD':'python', # 계정 비밀번호
+        # 'HOST':'localhost', # 데이테베이스 IP
+        'HOST':'djangomysql.c27izfbfapcr.ap-northeast-1.rds.amazonaws.com', #AWS에있는 RDS endpoint
+        'PORT':'3306', # 데이터베이스 port
+    }
 }
 
 
